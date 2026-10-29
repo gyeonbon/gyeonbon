@@ -1,0 +1,29 @@
+{
+  "name": "blind-teaching-challenge",
+  "version": "2.0.0",
+  "private": true,
+  "type": "module",
+  "description": "교육학과 진로체험용 실시간 모둠형 블라인드 티칭 챌린지",
+  "scripts": {
+    "start": "node server.mjs",
+    "dev": "node scripts/dev.mjs",
+    "build": "tsc --noEmit && vite build",
+    "test": "node --test test/*.test.mjs",
+    "check": "tsc --noEmit && node --check server.mjs && node --check lib/classroom.mjs"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "dependencies": {
+    "qrcode": "1.5.4",
+    "react": "19.3.1",
+    "react-dom": "19.3.1"
+  },
+  "devDependencies": {
+    "@types/qrcode": "1.5.6",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "typescript": "5.9.3",
+    "vite": "7.3.7"
+  }
+}
