@@ -201,8 +201,8 @@ test('student limits, malformed drawing, cross-origin requests and API health be
   const health = await f.request('/api/health'); assert.equal(health.data.ok, true);
   assert.equal((await f.request('/api/sessions', { title: '외부 요청' }, undefined, { Origin: 'https://other.example.com' })).status, 403);
   const teacher = await f.create();
-  const students = await Promise.all(Array.from({ length: 20 }, (_, i) => f.enter(teacher, `친구${i}`)));
-  assert.equal((await f.request(`/api/sessions/${teacher.code}/join`, { name: '스물한번째' })).status, 409);
+  const students = await Promise.all(Array.from({ length: 30 }, (_, i) => f.enter(teacher, `친구${i}`)));
+  assert.equal((await f.request(`/api/sessions/${teacher.code}/join`, { name: '서른한번째' })).status, 409);
   assert.equal((await f.request(`/api/sessions/${teacher.code}/join`, { name: students[0].name || '친구0' })).status, 409);
   await f.action(teacher, 'autoAssign'); await f.action(teacher, 'start');
   const roster = await f.state(teacher), group = roster.groups[0];

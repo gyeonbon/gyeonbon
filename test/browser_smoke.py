@@ -65,8 +65,8 @@ async def main():
         # Independent storage in nineteen browser contexts, across two browser processes.
         for start in range(0,19,5):
             pages.extend(await asyncio.gather(*(join(i) for i in range(start,min(start+5,19)))))
-        await teacher.wait_for_function("() => document.querySelector('.teacher-controls').textContent.includes('19 / 20명')")
-        await teacher.get_by_role('button',name='4개 모둠 자동 편성').click()
+        await teacher.wait_for_function("() => document.querySelector('.teacher-controls').textContent.includes('19 / 30명')")
+        await teacher.get_by_role('button',name='인원에 맞춰 자동 편성').click()
         s=await state(teacher)
         counts=[sum(x['groupId']==str(g) for x in s['students']) for g in range(1,5)]
         assert sorted(counts)==[4,5,5,5]
@@ -185,4 +185,5 @@ async def main():
         print(json.dumps({'students':19,'browser_processes':2,'independent_contexts':20,'group_sizes':counts,'gallery_drawings':15,'checks':['numeric-code+QR','concurrent-join','teacher-authorization','secret-word-privacy','independent-drawing','touch/mouse-canvas','autosave+reload','server-timer-pause-resume','question-answer-grace','single-answer-reveal','allgroup-gallery+PNG','presentation','reflection','held-reveal+secondattempt'],'page_errors':ERRORS},ensure_ascii=False,indent=2))
         await browser.close();await second_browser.close()
 
-asyncio.run(main())
+if __name__ == '__main__':
+    asyncio.run(main())

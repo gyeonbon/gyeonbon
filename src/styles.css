@@ -850,3 +850,12 @@ footer p { margin: 0; }
   .card, .group-card, .art-card, .canvas-card { border-color: #b9a4ce; }
   :focus-visible { outline: 3px solid #5f3b9c; }
 }
+
+/* Class size and group controls adapt to the current roster. */
+.group-card-actions { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+.remove-group { min-height: 40px; color: #a14f61; }
+.group-readiness { margin: 0; color: #715a8b; font-size: 12px; line-height: 1.7; }
+.join-card form > .primary { grid-column: 1 / -1; }
+.group-grid > .group-card:only-child { grid-column: 1 / -1; }
+.group-picker { grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); }
+@media (max-width:480px) { .group-picker { grid-template-columns: repeat(2, minmax(0,1fr)); } .group-card-actions { gap: 5px; } }
